@@ -26,6 +26,8 @@ public class PlayerAgent : Agent
     private Quaternion initBlueRot = Quaternion.Euler(Vector3.up * 90.0f);
     private Quaternion initRedRot = Quaternion.Euler(-Vector3.up * 90.0f);
 
+    public float kickForce = 800.0f;
+
     void InitPlayer()
     {
         tr.localPosition = (team == Team.Blue) ? initBluePos : initRedPos;
@@ -93,5 +95,16 @@ public class PlayerAgent : Agent
         if (Input.GetKey(KeyCode.A)) actions[1] = 1;
         if (Input.GetKey(KeyCode.D)) actions[1] = 2;
 
+    }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("ball"))
+        {
+            AddReward(0.2f);
+            // Kick 방향을 산출
+            Vector3 kickDir = coll.GetContact(0).point - tr.position;
+            coll.gameObject.GetComponent<Rigidbody>().AddForce(kickDir.normalized * kickForce);
+        }
     }
 }
