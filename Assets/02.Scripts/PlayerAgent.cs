@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Policies; // BehaviourParameters
+using Unity.MLAgents.Actuators;
 
+[RequireComponent(typeof(DecisionRequester))]
 public class PlayerAgent : Agent
 {
     public enum Team
@@ -48,5 +50,15 @@ public class PlayerAgent : Agent
     {
         InitPlayer();
         rb.velocity = rb.angularVelocity = Vector3.zero;
+    }
+
+    public override void OnActionReceived(ActionBuffers actions)
+    {
+
+    }
+
+    public override void Heuristic(in ActionBuffers actionsOut)
+    {
+
     }
 }
