@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 
-public class PlayerAgent : MonoBehaviour
+public class PlayerAgent : Agent
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum Team
     {
-
+        Blue, Red
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public Team team = Team.Blue;
+    public Material[] materials;
 }
