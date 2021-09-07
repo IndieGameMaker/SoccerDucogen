@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
+using TMPro;
 
 public class BallCtrl : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class BallCtrl : MonoBehaviour
 
     // 팀별 스코어 저장 변수
     private int blueScore, redScore;
+    public TMP_Text blueScoreText, redScoreText;
 
     void Start()
     {
