@@ -59,6 +59,21 @@ public class PlayerAgent : Agent
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
+        /*  Discrete
+            전후이동 : 정지/전진/후진 (0, 1, 2)   Non,W,S
+            회전처리 : 정지/왼쪽/오른쪽 (0, 1, 2)  Non,A,D
+        */
+
+        var actions = actionsOut.DiscreteActions;
+        actions.Clear();
+
+        // Branch 0
+        if (Input.GetKey(KeyCode.W)) actions[0] = 1;
+        if (Input.GetKey(KeyCode.S)) actions[0] = 2;
+
+        // Branch 1
+        if (Input.GetKey(KeyCode.A)) actions[1] = 1;
+        if (Input.GetKey(KeyCode.D)) actions[1] = 2;
 
     }
 }
