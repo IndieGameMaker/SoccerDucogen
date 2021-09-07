@@ -22,4 +22,26 @@ public class BallCtrl : MonoBehaviour
         rb.velocity = rb.angularVelocity = Vector3.zero;
         transform.localPosition = new Vector3(0.0f, 1.0f, 0.0f);
     }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("BLUE_GOAL"))
+        {
+            // Blue -1 Reward
+            players[0].AddReward(-1.0f);
+
+            // Red +1 Reward
+            players[1].AddReward(+1.0f);
+
+            // Ball Init
+            InitBall();
+
+            // Player Init
+            players[0].EndEpisode();
+            players[1].EndEpisode();
+
+            // 스코어 누적
+            ++redScore;
+        }
+    }
 }
