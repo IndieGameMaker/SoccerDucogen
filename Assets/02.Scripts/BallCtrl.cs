@@ -45,6 +45,7 @@ public class BallCtrl : MonoBehaviour
 
             // 스코어 누적
             ++redScore;
+            redScoreText.text = redScore.ToString();
         }
 
         // 블루팀 골인
@@ -65,6 +66,7 @@ public class BallCtrl : MonoBehaviour
 
             // 스코어 누적
             ++blueScore;
+            blueScoreText.text = blueScore.ToString();
         }
     }
 }
