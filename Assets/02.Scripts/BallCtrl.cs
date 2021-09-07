@@ -25,6 +25,7 @@ public class BallCtrl : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
+        // 레드팀 골인
         if (coll.collider.CompareTag("BLUE_GOAL"))
         {
             // Blue -1 Reward
@@ -42,6 +43,26 @@ public class BallCtrl : MonoBehaviour
 
             // 스코어 누적
             ++redScore;
+        }
+
+        // 블루팀 골인
+        if (coll.collider.CompareTag("RED_GOAL"))
+        {
+            // Blue +1 Reward
+            players[0].AddReward(+1.0f);
+
+            // Red -1 Reward
+            players[1].AddReward(-1.0f);
+
+            // Ball Init
+            InitBall();
+
+            // Player Init
+            players[0].EndEpisode();
+            players[1].EndEpisode();
+
+            // 스코어 누적
+            ++blueScore;
         }
     }
 }
