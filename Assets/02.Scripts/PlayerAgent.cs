@@ -54,7 +54,8 @@ public class PlayerAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-
+        var action = actions.DiscreteActions;
+        Debug.LogFormat("[0]={0}, [1]={1}", action[0], action[1]);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
