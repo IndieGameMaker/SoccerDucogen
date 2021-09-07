@@ -20,6 +20,15 @@ public class PlayerAgent : Agent
 
     public override void Initialize()
     {
+        MaxStep = 10000;
 
+        bps = GetComponent<BehaviorParameters>();
+        tr = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody>();
+
+        // Team ID값을 설정
+        bps.TeamId = (int)team;
+        // Team Color 변경
+        GetComponent<Renderer>().material = materials[(int)team];
     }
 }
